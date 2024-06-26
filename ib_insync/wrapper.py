@@ -452,7 +452,7 @@ class Wrapper:
         orderStatus = OrderStatus(
             orderId=order.orderId, status=orderState.status)
         trade = Trade(contract, order, orderStatus, [], [])
-        self._results['completedOrders'].append(trade)
+        self._results.setdefault('completedOrders', []).append(trade)
         if order.permId not in self.permId2Trade:
             self.trades[order.permId] = trade
             self.permId2Trade[order.permId] = trade
